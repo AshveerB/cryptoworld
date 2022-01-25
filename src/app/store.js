@@ -1,11 +1,11 @@
-import React from 'react';
+import { configureStore } from '@reduxjs/toolkit';
 
-function store(props) {
-    return (
-        <div>
-            Store
-        </div>
-    );
-}
+import { cryptoApi } from '../services/cryptoApi';
+import { cryptoNewsApi } from '../services/cryptoNewsApi';
 
-export default store;
+export default configureStore({
+	reducer: {
+		[cryptoApi.reducerPath]: cryptoApi.reducer,
+		[cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
+	},
+});
